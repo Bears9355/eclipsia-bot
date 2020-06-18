@@ -5,7 +5,7 @@ const client = new Discord.Client();
 
 let prefix = "e!"
 
-client.login("NzIxNjczNjU2NjAxOTM1OTI1.XuX9AA.vOxsNKQ25USAV70W17op8Xz4_fI")
+client.login(process.env.TOKEN)
 
 const cmdInfo = require("./files/cmdInfo");
 const cmdCompteur = require("./files/cmdCompteur");
