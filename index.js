@@ -52,11 +52,11 @@ client.on('message', message => {
 
             if (error) {
 
-                channel.setName("Serveur hors-ligne")
+                guilds.channels.cache.get("723178123004477513").setName("Serveur hors-ligne")
 
             } else {
 
-                channel.setName('Joueurs en ligne : ' + response.playersOnline)
+                guilds.channels.cache.get("723178123004477513").setName('Joueurs en ligne : ' + response.playersOnline)
 
 
                 } (1 * 60 * 1000);
