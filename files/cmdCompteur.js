@@ -23,7 +23,7 @@ module.exports = (message, msgSplit, prefix, client, Discord) => {
                 channel.setName('Joueurs en ligne : ' + response.playersOnline)
 
 
-                } (5 * 60 * 1000);
+                } (1 * 60 * 1000);
 
             }
         );
