@@ -28,6 +28,8 @@ client.on("message", message => {
 client.on("ready", () => {
 
     console.log("Bot connecté !");
+    
+    cmdCompteur(message, msgSplit, prefix, client, Discord);
 
 });
 
