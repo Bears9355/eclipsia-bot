@@ -16,11 +16,11 @@ module.exports = (message, msgSplit, prefix, client, Discord) => {
 
             if (error) {
 
-                channel.setName("Serveur hors-ligne")
+                channels.get("723107743107514440").setName("Serveur hors-ligne")
 
             } else {
 
-                channel.setName('Joueurs en ligne : ' + response.playersOnline)
+                channels.get("723107743107514440").setName('Joueurs en ligne : ' + response.playersOnline)
 
 
                 } (1 * 60 * 1000);
