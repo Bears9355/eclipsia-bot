@@ -16,52 +16,29 @@ client.on("message", message => {
 
     if (message.author.bot || !message.guild) return;
 
-            msgSplit = message.content.split(" ");
-
-
-        cmdInfo(message, msgSplit, prefix, client, Discord);
-        
-    });
+    msgSplit = message.content.split(" ");
+    
+    cmdInfo(message, msgSplit, prefix, client, Discord);
+});
 
 
 client.on("ready", () => {
 
     console.log("Bot connecté !");
+
+    setInterval(() => {
     
-
-
-});
-
-
-// compteur
-
-client.on('message', message => {
-    if (msgSplit[0].toLocaleLowerCase() != "e!compteur") return;
-    if (!message.member.hasPermission("MANAGE_SERVER")) return;
-
-    message.delete()
-
-    message.guild.channels.create("Joueurs en ligne : ", {
-        type: "voice",
-        nsfw: false
-    }).then(channel => {
-
-        setInterval(() => {
-
-        require("minecraft-ping").ping_fe01fa({ host: "94.130.165.162", port: 25748 }, function (error, response) {
-
+        require("minecraft-ping").ping_fe01fa({ host: "94.130.165.162", port: 25748 }, (error, response) => {
+            
             if (error) {
 
-                guilds.channels.get("723178123004477513").setName("Serveur hors-ligne")
+                client.channels.get("723178123004477513").setName("Serveur hors-ligne");
 
             } else {
 
-                guilds.channels.get("723178123004477513").setName('Joueurs en ligne : ' + response.playersOnline)
-
-
-                } (1 * 60 * 1000);
-
+                guilds.channels.get("723178123004477513").setName("Joueurs en ligne : " + response.playersOnline);
             }
-        );
-})
-    },)})
+        });
+
+    }, (1 * 60 * 1000);
+});
