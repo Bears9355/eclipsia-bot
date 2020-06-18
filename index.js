@@ -5,10 +5,10 @@ const client = new Discord.Client();
 
 let prefix = "e!"
 
-client.login(process.env.TOKEN)
+client.login("NzIxNjczNjU2NjAxOTM1OTI1.Xusw7w.jtybF8lyNg-cJWMBbIie4AyhXb4")
 
 const cmdInfo = require("./files/cmdInfo");
-const cmdCompteur = require("./files/cmdCompteur");
+
 
 // Quand un message est envoyé
 client.on("message", message => {
@@ -20,7 +20,6 @@ client.on("message", message => {
 
 
         cmdInfo(message, msgSplit, prefix, client, Discord);
-        cmdCompteur(message, msgSplit, prefix, client, Discord);
         
     });
 
@@ -29,9 +28,40 @@ client.on("ready", () => {
 
     console.log("Bot connecté !");
     
-    cmdCompteur(message, msgSplit, prefix, client, Discord);
+
 
 });
 
 
+// compteur
 
+client.on('message', message => {
+    if (msgSplit[0].toLocaleLowerCase() != "e!compteur") return;
+    if (!message.member.hasPermission("MANAGE_SERVER")) return;
+
+    message.delete()
+
+    message.guild.channels.create("Joueurs en ligne : ", {
+        type: "voice",
+        nsfw: false
+    }).then(channel => {
+
+        setInterval(() => {
+
+        require("minecraft-ping").ping_fe01fa({ host: "94.130.165.162", port: 25748 }, function (error, response) {
+
+            if (error) {
+
+                channel.setName("Serveur hors-ligne")
+
+            } else {
+
+                channel.setName('Joueurs en ligne : ' + response.playersOnline)
+
+
+                } (1 * 60 * 1000);
+
+            }
+        );
+})
+    },)})
